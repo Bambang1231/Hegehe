@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undangan Syukuran Nujuh Bulanan - Rossa Aulianti</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --primary: #c86b85;
+    --dark-primary: #a35368;
+    --soft-bg: #fdf2f4;
+  }
+
+  /* Base Setup - Ringan & Cepat */
+  body, html {
+    margin: 0; padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--soft-bg);
+    color: #444;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  /* Overlay Pembuka (Penting untuk Autoplay Musik) */
+  #overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: white;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    z-index: 9999;
+    transition: 0.8s ease-out;
+  }
+
+  /* Background Animasi Ringan */
+  .bg-decor {
+    position: fixed;
+    width: 150px; height: 150px;
+    background: rgba(200, 107, 133, 0.05);
+    border-radius: 50%;
+    z-index: -1;
+    filter: blur(50px);
+    animation: move 20s infinite alternate;
+  }
+  @keyframes move {
+    from { transform: translate(-10%, -10%); }
+    to { transform: translate(100%, 100%); }
+  }
+
+  /* Kontainer Utama */
+  .container {
+    max-width: 420px;
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    padding: 40px 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: center;
+    position: relative;
+    will-change: transform;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h1 { font-family: 'Great Vibes', cursive; font-size: 50px; color: var(--dark-primary); margin: 10px 0; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: #888; }
+
+  /* Frame Foto Sederhana & Mewah */
+  .photo-frame {
+    width: 200px; height: 200px;
+    margin: 25px auto;
+    border-radius: 50%;
+    border: 6px solid white;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    overflow: hidden;
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+  .sholawat {
+    font-size: 13px; font-style: italic; color: var(--primary);
+    padding: 15px; border-top: 1px solid #eee; border-bottom: 1px solid #eee; margin: 20px 0;
+  }
+
+  .info-card {
+    background: #fdfafb;
+    padding: 20px; border-radius: 20px;
+    margin: 25px 0;
+  }
+
+  .label { font-size: 10px; font-weight: 600; color: var(--primary); letter-spacing: 2px; text-transform: uppercase; }
+  .val { font-size: 16px; font-weight: 600; margin-bottom: 15px; display: block; }
+
+  .btn {
+    background: var(--primary); color: white;
+    padding: 15px 30px; border-radius: 50px;
+    text-decoration: none; display: inline-block;
+    font-size: 14px; font-weight: 600;
+    transition: 0.3s; border: none; cursor: pointer;
+  }
+  .btn:active { transform: scale(0.95); }
+
+  /* Music Toggle */
+  .music-btn {
+    position: fixed; bottom: 20px; right: 20px;
+    width: 45px; height: 45px; background: white;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; z-index: 100;
+  }
+
+  /* Animasi Kelopak Bunga (Ringan - CSS Only) */
+  .petal-css {
+    position: fixed; top: -20px; z-index: 99;
+    animation: fall linear infinite; color: var(--primary); opacity: 0.6;
+  }
+  @keyframes fall {
+    to { transform: translateY(105vh) rotate(360deg); }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-decor"></div>
+
+<div id="overlay">
+  <h2 style="margin-bottom: 10px;">Undangan Syukuran</h2>
+  <h1 style="margin-top: 0;">Rossa Aulianti</h1>
+  <button class="btn" onclick="startInv()">Buka Undangan</button>
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="musik.mp3" type="audio/mpeg">
+</audio>
+
+<div class="music-btn" onclick="toggleMusic()">
+  <span id="music-icon">🎵</span>
+</div>
+
+<div class="container">
+  <h2>The Celebration of</h2>
+  <h1>Nujuh Bulanan</h1>
+
+  <div class="photo-frame">
+    <img src="foto-bumil.jpg" alt="Rossa Aulianti">
+  </div>
+
+  <div class="sholawat">
+    "Barakallahu laka fil mauhubi laka wa syakartal wahiba..."
+  </div>
+
+  <p style="font-size: 14px;">Assalamu’alaikum Wr. Wb.</p>
+  <p style="font-size: 13px; line-height: 1.6; color: #666;">Kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam syukuran 7 bulan kehamilan:</p>
+
+  <div class="info-card">
+    <span class="label">Calon Ibu</span>
+    <span class="val" style="font-size: 20px; color: var(--dark-primary);">Rossa Aulianti</span>
+    
+    <div style="display: flex; justify-content: space-around; margin: 15px 0;">
+      <div><span class="label">Rabu</span><br><b>07 Jan 2026</b></div>
+      <div><span class="label">Waktu</span><br><b>16.00 WIB</b></div>
+    </div>
+
+    <div style="margin-top: 15px; border-top: 1px dashed #ddd; padding-top: 15px;">
+      <span class="label">Lokasi</span>
+      <span class="val">Pos RW 09, Jl. Kalibaru Barat 2,<br>Kec. Cilincing</span>
+    </div>
+  </div>
+
+  <button class="btn" onclick="window.open('https://maps.google.com')">📍 Buka Google Maps</button>
+
+  <p style="font-size: 12px; color: #888; margin-top: 30px;">
+    Terima kasih atas doa dan kehadirannya.<br>
+    <b>Wassalamu’alaikum Wr. Wb.</b>
+  </p>
+</div>
+
+<script>
+  const music = document.getElementById('bgMusic');
+  
+  // Fungsi Buka Undangan & Play Musik
+  function startInv() {
+    document.getElementById('overlay').style.opacity = '0';
+    setTimeout(() => {
+      document.getElementById('overlay').style.display = 'none';
+    }, 800);
+    
+    // Autoplay Musik
+    music.play().catch(e => console.log("Autoplay dicegah browser"));
+    document.getElementById('music-icon').innerHTML = '⏸️';
+    
+    // Jalankan efek kelopak (opsional, tetap ringan)
+    startPetals();
+  }
+
+  function toggleMusic() {
+    if (music.paused) {
+      music.play();
+      document.getElementById('music-icon').innerHTML = '⏸️';
+    } else {
+      music.pause();
+      document.getElementById('music-icon').innerHTML = '🎵';
+    }
+  }
+
+  // Animasi Kelopak Versi Ringan (CSS Based)
+  function startPetals() {
+    for(let i=0; i<15; i++) {
+      let p = document.createElement('div');
+      p.className = 'petal-css';
+      p.innerHTML = '🌸';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      p.style.animationDelay = Math.random() * 5 + 's';
+      p.style.fontSize = Math.random() * 10 + 10 + 'px';
+      document.body.appendChild(p);
+    }
+  }
+</script>
+
+</body>
+</html>
